@@ -12,7 +12,12 @@ library(DT)
 url <- 'https://raw.githubusercontent.com/amberferger/DATA608_Knowledge_and_Visual_Analytics/master/module3/data/'
 filenm <- 'cleaned-cdc-mortality-1999-2010-2.csv'
 
-df <- read.csv(paste0(url, filenm))
+rawData <- read.csv(paste0(url, filenm))
+
+# eliminate data with only 1 year
+df <- rawData %>% group_by(ICD.Chapter) %>%
+  mutate(num_years = n_distinct(Year)) %>%
+  filter(num_years != 1)
 
 
 #Question 1:
@@ -34,7 +39,13 @@ ui <- fluidPage(
   
   # Application title
   titlePanel("Mortality Rates by Cause Across the US"),
-  
+  h4('DATA 608 - Fall 2020: Assignment 3'),
+  h4('Created By: Amber Ferger'),
+  tags$a(href="https://raw.githubusercontent.com/amberferger/DATA608_Knowledge_and_Visual_Analytics/master/module3/data/cleaned-cdc-mortality-1999-2010-2.csv", "Data Source"),
+  br(),
+  br(),
+  h4("(1) Create a visualization that allows you to rank States by crude mortality for each cause of death in 2010."),
+  br(),
   selectInput(inputId = "input_cause", 
               label = " Choose a Cause:",
               choices = unique(df$ICD.Chapter),
@@ -44,6 +55,16 @@ ui <- fluidPage(
   plotlyOutput(outputId = "mortalityPlot"),
   br(),
   br(),
+  br(),
+  br(),
+  h4("(2) Create a visualization that lets your clients see whether particular States are improving their mortality rates (per cause) faster than, or slower than, the national average."),
+  tags$ul(
+    tags$li("The national average is calculated as a weighted average of the rate of change over all states."), 
+    tags$li("The comparison is based on the difference between the national average and the local average between the min and max year of data for a particular state."), 
+    tags$li("Green bars represent mortality rate changes that are faster than the national average. Red bars represent mortality rate changes that are slower than the national average.")
+  ),
+  
+  
   br(),
   plotlyOutput(outputId = "mortalityChange"),
   br()

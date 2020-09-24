@@ -1,0 +1,13 @@
+name: DATA608_MortalityRates
+title: DATA608_MortalityRates
+username:
+account: qcrd
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2872659
+bundleId: 3663513
+url: https://qcrd.shinyapps.io/DATA608_MortalityRates/
+when: 1600895355.62406
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Assignment 3.pdf|data/cleaned-cdc-mortality-1999-2010-2.csv|Sample Apps/ggplot-reactive.R|Sample Apps/ggplot-simple.R|Sample Apps/ggplot-simplest.R|Sample Apps/plotly-simple.R

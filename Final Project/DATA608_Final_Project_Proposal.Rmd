@@ -1,0 +1,18 @@
+---
+title: 'DATA 608: Final Project Proposal'
+author: "Amber Ferger"
+date: "10/17/2020"
+output: html_document
+---
+
+## Project Description
+For my final project, I will examine the effect of COVID-19 on different counties in New York. I plan on creating a visualization that incorporates county-level data on infection rates. The final product will be interactive - the user will be able to select (1) the county and (2) a display of the daily number of cases or the 14-day cumulative number of cases. 
+
+## Data Set
+I'll be taking the data from the following website:  https://health.data.ny.gov/Health/New-York-State-Statewide-COVID-19-Testing/xdss-u53e.
+
+## Relevance
+The motivation behind this project is two-fold. First, understanding the daily trends in infection and testing rates can help to pinpoint spikes and predict the future state of areas throughout NY. Second, on a more personal level, I play roller derby for Queen City Roller Derby (in Buffalo, NY) and am in charge of developing a Return to Play plan for my league. Because we are affiliated with Women's Flat Track Derby Association (WFTDA), we must meet the minimum requirements mandated by the association in order start practicing again. These baseline conditions mandate that any counties in our league (ie, Erie County) have no more than 50 positive cases per 100,000 individuals over a 14-day timeline. Although there are plenty of websites out there that track the current infection rates throughout the US, there are none that track the data over a 14 day period. On a practical note, this project will also be a way for my league to monitor the current status of the county we are in. 
+
+## Technologies
+I will be using RShiny to develop this application and deploy the website to Shiny Server Open Source. 

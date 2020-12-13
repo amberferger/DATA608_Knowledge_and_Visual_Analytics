@@ -1,0 +1,47 @@
+---
+title: 'WFTDA Return to Play Tracker'
+author: "Amber Ferger"
+date: "12/13/2020"
+output: html_document
+---
+
+Dashboard Link: https://qcrd.shinyapps.io/QCRDCovidCases/
+
+## Background
+Women's Flat Track Derby Association (WFTDA) mandates that its member leagues meet a minimum set of conditions before returning to play. One of these requirements is that the league's surrounding area have a maximum of 50 positive covid cases per 100,000 individuals over a 14 day period. Once reaching this threshold, Queen City Roller Derby (based in Buffalo, NY) will hold off an additional 14 days at this baseline before returning to play. 
+
+
+## Data Source
+This dashboard has 2 data sources. 
+
+* Covid data is sourced from the [ny.gov data repository](https://health.data.ny.gov/Health/New-York-State-Statewide-COVID-19-Testing/xdss-u53e). Per the NYS website, the dataset includes information on the number of Covid-19 tests performed in New York State beginning March 1, 2020, when the first case of COVID-19 was identified in the state. It includes daily tests, daily positive cases, cumulative tests, and cumulative positive cases. 
+* Population data is sourced from the [ny.gov government and finance data repository](https://data.ny.gov/Government-Finance/Annual-Population-Estimates-for-New-York-State-and/krt9-ym2k). Per the NYS website, this dataset includes resident population estimates of New York State counties based on Census counts (base population), inter-censal estimates, and post-censal estimates. Population counts from the year 2019 are used in this dashboard. 
+
+
+### Data Scrubbing & Formatting
+#### Population Data
+
+* The population data is used to: (1) create a base covid threshold per county, (2) display the appropriate county on the NYS map, and (3) display the options for county selection in the first drop-down.  
+* The base threshold is created by taking the total number of people in each county and calculating the maximum number of allowable cases based on WFTDA's 50 cases/ 100,000 residents over a 14 day period rule. 
+* The word "county" is dropped from each record so that the data can be adequately joined to the Covid Data. 
+* The data is filtered for the year 2019 and NYS counties only. 
+
+
+#### Covid Data
+The following statistics are created for display in the graphical options: 
+
+* **Rolling Sum**: The 14-day total number of cases in the selected region.
+* **Running Count**: The total number of consecutive days that the region has met the baseline criteria. 
+* **Percent Positive**: The daily number of positive cases out of the total number of tests performed. 
+
+## How it works - Parameters
+The user is able to select the county to display as well as the type of graphic to view. Defaults for the dashboard are Erie County (where Queen City Roller Derby is based) and the 14-Day Rolling Sum of Positive cases (the metric used to gauge the league's ability to return to play). Every time a new county is selected, an API call is made to the NYS Covid databank and the results are refreshed. The chosen county is also displayed on the NYS geographical map. The options for data display are: 
+
+* **14 Day Rolling Sum**: The 14 day cumulative number of positive cases. 
+* **Daily Cases**: The daily number of positive cases. 
+* **Daily Tests**: The number of Covid tests performed. 
+* **Daily Percent Positive**: The percent positive cases out of the total number of tests performed.  
+
+
+## Importance
+This dashboard is important for my roller derby league (QCRD) to monitor the active cases in the region and develop a plan to return to play. We have a league meeting every month and this tool has been really helpful in allowing our members to visualize the developments in the region. 
